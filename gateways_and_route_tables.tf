@@ -50,20 +50,20 @@ resource "aws_route_table" "nat_gw_rt" {
     Name = "nat gw route table"
   }
 }
-  
+
 # Associating Public Subnet 
 resource "aws_route_table_association" "associate_public_subnet" {
   subnet_id      = aws_subnet.public_subnet.id
   route_table_id = aws_default_route_table.gw_router.id
 }
 
-# Associating Public Subnet 
+# Associating Private Subnet 1
 resource "aws_route_table_association" "associate_private_subnet_1" {
   subnet_id      = aws_subnet.private_subnet_1.id
   route_table_id = aws_route_table.nat_gw_rt.id
 }
 
-# Associating Public Subnet 
+# Associating Private Subnet 2
 resource "aws_route_table_association" "associate_private_subnet_2" {
   subnet_id      = aws_subnet.private_subnet_2.id
   route_table_id = aws_route_table.nat_gw_rt.id
